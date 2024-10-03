@@ -10,9 +10,9 @@ const Course = () => {
   return (
     <div>
       <Navbar />
-      <div className="max-w-screen-2xl container mx-auto px-4 md:px-6 lg:px-8">
+      <div className="max-w-screen-2xl container mx-auto px-4 md:px-6 lg:px-8 md:my-[4rem]">
         {/* Hero Section */}
-        <div className="mt-16 md:mt-20 text-center flex flex-col gap-10">
+        <div className="mt-16 text-center flex flex-col gap-10 md:py-10">
           <h1 className="font-bold text-xl md:text-3xl lg:text-4xl">
             We're delighted to have you
             <span className="text-pink-500"> Here! :)</span>

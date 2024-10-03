@@ -81,15 +81,15 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow dark:bg-slate-900 dark:text-white"
             >
               {navItems}
             </ul>
           </div>
           <a className="text-3xl font-bold cursor-pointer">Bookstore</a>
         </div>
-        <div className="navbar-end space-x-3">
-          <div className="navbar-center hidden lg:flex">
+        <div className="navbar-end space-x-3 dark:bg-slate-900 dark:text-white">
+          <div className="navbar-center hidden lg:flex dark:bg-slate-900 dark:text-white">
             <ul className="menu menu-horizontal px-1">{navItems}</ul>
           </div>
           <div className="hidden md:block ">

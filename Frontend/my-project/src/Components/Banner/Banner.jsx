@@ -1,5 +1,5 @@
 import React from "react";
-import book from '../../assets/bookWallpaper.png'
+import book from "../../assets/bookWallpaper.png";
 
 const Banner = () => {
   return (
@@ -30,14 +30,18 @@ const Banner = () => {
             </label>
           </div>
           <div>
-          <button className="btn btn-active bg-pink-500">Secondary</button>
+            <button className="btn btn-active bg-pink-500">Secondary</button>
           </div>
         </div>
       </div>
       <div className="w-full order-1 md:w-1/2">
-      <div className="md:ml-[12rem]">
-      <img src={book} alt="bookwallpaper" className="w-[32rem] dark:bg-slate-900 dark:text-white"/>
-      </div>
+        <div className="md:ml-[12rem]">
+          <img
+            src={book}
+            alt="bookwallpaper"
+            className="w-[32rem] bg-white dark:bg-gray-300 dark:text-white rounded-lg"
+          />
+        </div>
       </div>
     </div>
   );
