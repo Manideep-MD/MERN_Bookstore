@@ -5,6 +5,8 @@ import './index.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <div className='dark:bg-slate-900 dark:text-white'>
     <App />
+    </div>
   </StrictMode>,
 )

@@ -3,7 +3,7 @@ import book from '../../assets/bookWallpaper.png'
 
 const Banner = () => {
   return (
-    <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 flex flex-col md:flex-row my-[8rem]">
+    <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 dark:bg-slate-900 dark:text-white flex flex-col md:flex-row my-[4rem]">
       <div className="w-full order-2 md:order-1 md:w-1/2 mt-12 md:mt-36x ">
         <div className="space-y-2 md:space-y-12">
           <h1 className="text-2xl md:text-4xl font-bold">
@@ -36,7 +36,7 @@ const Banner = () => {
       </div>
       <div className="w-full order-1 md:w-1/2">
       <div className="md:ml-[12rem]">
-      <img src={book} alt="bookwallpaper" className="w-[32rem]"/>
+      <img src={book} alt="bookwallpaper" className="w-[32rem] dark:bg-slate-900 dark:text-white"/>
       </div>
       </div>
     </div>
