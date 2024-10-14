@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Login from "../Login/Login";
+import { useDispatch, useSelector } from "react-redux";
+import { SET_USER_DATA } from "../../Redux/userDetails";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [sticky, setSticky] = useState(false);
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
+  const userData = useSelector((state) => state.user.userData)
+  const dispatch = useDispatch()
 
   const element = document.documentElement;
 
@@ -51,6 +57,12 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleLogout=()=>{
+    dispatch(SET_USER_DATA([]))
+    toast.success("User logged out successfully")
+  }
+
 
   return (
     <div
@@ -143,11 +155,18 @@ const Navbar = () => {
               </svg>
             </label>
           </div>
-          <div>
-            <button className="bg-black w-20 text-white px-2 py-3 rounded-md hover:bg-slate-800 cursor-pointer duration-3000">
+          {userData.length === 0 ? <div>
+            <button className="bg-black w-20 text-white px-2 dark:bg-pink-500 py-3 rounded-md hover:bg-slate-800 cursor-pointer duration-3000" onClick={()=>document.getElementById('my_modal_3').showModal()}>
               Login
             </button>
-          </div>
+            <Login/>
+          </div> 
+          :
+          <div>
+          <button className="bg-black w-20 text-white px-2 dark:bg-pink-500 py-3 rounded-md hover:bg-slate-800 cursor-pointer duration-3000" onClick={()=>handleLogout()}>
+              Logout
+            </button>
+          </div>}
         </div>
       </div>
     </div>

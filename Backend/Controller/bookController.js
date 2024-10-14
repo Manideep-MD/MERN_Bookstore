@@ -1,4 +1,4 @@
-import express from "express";
+// import express from "express";
 import Book from '../Model/bookModel.js'
 
 export const addBooks = async(req,res) =>{
@@ -34,4 +34,14 @@ export const addBooks = async(req,res) =>{
     console.error(error); // Log the error for debugging
     return res.status(500).json({ error: "Internal Server Error" });
   }
+}
+
+export const getBooks = async(req,res) =>{
+   try{
+     const response = await Book.find()
+     res.status(200).json(response)
+
+   }catch(error){
+      res.status(500).json(error)
+   }
 }

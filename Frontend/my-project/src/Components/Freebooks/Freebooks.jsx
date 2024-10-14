@@ -1,13 +1,34 @@
-import React, { useState } from "react";
-import { booksData } from "../booksData/booksData.jsx";
+import React, { useEffect, useState } from "react";
 import Card from "../Card/Card.jsx";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import booksData from "../booksData/booksData.json";
+import { BooksData } from "../../Api/index.jsx";
 
 const Freebooks = () => {
-  const [data, setData] = useState("");
-  const filteredData = booksData.filter((ele) => ele.category === "free");
+  // const [data, setData] = useState("");
+  const [filteredData, setFilteredData] = useState("");
+
+  const fetchBooks = async () => {
+    try {
+      const response = await BooksData();
+      if (response && response.status === 200) {
+        const filteredDatas = response.data.filter(
+          (ele) => ele.category === "free"
+        );
+        setFilteredData(filteredDatas);
+      } else {
+        console.log("Error in fetching login details");
+      }
+    } catch (error) {
+      console.log("Error:" + error.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchBooks();
+  }, []);
 
   var settings = {
     dots: true,
@@ -44,6 +65,7 @@ const Freebooks = () => {
     ],
   };
 
+
   return (
     <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 flex flex-col gap-[1.5rem]">
       <div>
@@ -58,7 +80,8 @@ const Freebooks = () => {
       </div>
       <div>
         <Slider {...settings}>
-          {filteredData && filteredData.map((item) => <Card item={item} key={item.id}/>)}
+          {filteredData &&
+            filteredData.map((item) => <Card item={item} key={item.id} />)}
         </Slider>
       </div>
     </div>

@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
-import {booksData} from "../booksData/booksData";
 import Card from "../Card/Card";
 import { Link } from "react-router-dom";
+import { BooksData } from "../../Api";
 
 const Course = () => {
-  const filteredData = booksData;
+  const [filteredData, setFilteredData] = useState("");
+
+  const fetchBooks = async () => {
+    try {
+      const response = await BooksData();
+      if (response && response.status === 200) {
+        const filteredDatas = response.data.filter(
+          (ele) => ele.category === "paid"
+        );
+        setFilteredData(filteredDatas);
+      } else {
+        console.log("Error in fetching login details");
+      }
+    } catch (error) {
+      console.log("Error:" + error.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchBooks();
+  }, []);
+
   return (
     <div>
       <Navbar />
